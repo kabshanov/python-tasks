@@ -248,7 +248,257 @@ filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 Ввод: 145263 Вывод: 654321
 Ввод: 123456789 Вывод: 987654321
 '''
-def descending_order(num):
-    return int(''.join(sorted([str(n) for n in str(num)], reverse=True)))
+# def descending_order(num):
+#     return int(''.join(sorted([str(n) for n in str(num)], reverse=True)))
+#
+# print(descending_order(123456789))
+'''
+Ваша задача
+Учитывая массив логических значений и логический оператор, верните логическое значение, последовательно применяя оператор к значениям в массиве.
 
-print(descending_order(123456789))
+Примеры
+логические значения = [True, True, False], оператор = "AND"
+True AND True -> True
+True AND False -> False
+Возврат False
+логические значения = [True, True, False], оператор = "OR"
+True OR True -> True
+True OR False -> True
+Возврат True
+логические значения = [True, True, False], оператор = "XOR"
+True XOR True -> False
+False XOR False -> False
+Возврат False
+Входные данные
+массив логических значений (1 <= array_length <= 50)
+строка, задающая логический оператор: "AND", "OR", "XOR"
+Выходной сигнал
+Логическое значение (True или False).
+'''
+# def logical_calc(array, op):
+#     result = array[0]
+#     for value in array[1:]:
+#         if op == "OR":
+#             result = result or value
+#         elif op == "AND":
+#             result = result and value
+#         elif op == "XOR":
+#             result = result ^ value
+#     return result
+#
+#
+# print(logical_calc([True, False], "OR"))
+'''
+Завершите функцию uefaEuro2016(), чтобы она возвращала строку, как в приведённых ниже примерах:
+
+uefa_euro_2016(['Germany', 'Ukraine'],[2, 0]) # "At match Germany - Ukraine, Germany won!"
+uefa_euro_2016(['Belgium', 'Italy'],[0, 2]) # "At match Belgium - Italy, Italy won!"
+uefa_euro_2016(['Portugal', 'Iceland'],[1, 1]) # "At match Portugal - Iceland, teams played draw."
+'''
+# def uefa_euro_2016(teams, scores):
+#     if scores[0] > scores[1]:
+#         return f'At match {teams[0]} - {teams[1]}, {teams[0]} won!'
+#     elif scores[0] < scores[1]:
+#         return f'At match {teams[0]} - {teams[1]}, {teams[1]} won!'
+#     else:
+#         return f'At match {teams[0]} - {teams[1]}, teams played draw.'
+
+'''
+Учитывая массив чисел, проверьте, являются ли какие-либо из них 
+кодами символов для гласных в нижнем регистре (a, e, i, o, u).
+
+Если это так, измените значение массива на строку с этой гласной.
+
+Верните результирующий массив.
+'''
+# def is_vow(inp: list):
+#     vowel_codes = {
+#         97 : 'a',
+#         101 : 'e',
+#         105 : 'i',
+#         111 : 'o',
+#         117 : 'u'
+#     }
+#
+#     for idx in range(len(inp)) :
+#         if inp[idx] in vowel_codes :
+#             inp[idx] = vowel_codes[inp[idx]]
+#
+#     return inp
+#
+# print(is_vow([97, "u",120,121,"u",98,122,"a",120,106,104,116,113,114,113,120,106 ]))
+
+'''
+На ежегодном семейном собрании принято узнавать возраст самого старшего и самого младшего членов семьи и вычислять разницу между ними.
+
+Вам будет предоставлен массив с возрастом всех членов семьи в произвольном порядке. 
+Возраст будет указан в целых числах, поэтому ребёнку в возрасте 5 месяцев будет присвоен «возраст» 0. 
+Верните новый массив (кортеж в Python) с [самым маленьким возрастом, 
+самым большим возрастом, разницей между самым маленьким и самым большим возрастом].
+'''
+# def difference_in_ages(ages):
+#     sort_ages = sorted(ages)
+#     min_age = min(sort_ages)
+#     max_age = max(sort_ages)
+#     difference = max_age - min_age
+#     result = (min_age, max_age, difference)
+#     return result
+#
+# print(difference_in_ages([16, 22, 31, 44, 3, 38, 27, 41, 88]))
+'''
+Это спин-офф моего первого ката.
+
+Вам дана строка, содержащая последовательность символов, разделённых запятыми.
+
+Напишите функцию, которая возвращает новую строку, содержащую те же последовательности символов, 
+кроме первой и последней, но на этот раз разделённую пробелами.
+
+Если входная строка пуста или удаление первого и последнего элементов приведёт к тому, 
+что результирующая строка будет пустой, верните пустое значение (в приведённых ниже примерах представлено в виде универсального значения NULL).
+
+Примеры
+"1,2,3"      =>  "2"
+"1,2,3,4"    =>  "2 3"
+"1,2,3,4,5"  =>  "2 3 4"
+
+""     =>  NULL
+"1"    =>  NULL
+"1,2"  =>  NULL
+'''
+# def array(string: str):
+#     string_list = string.split(',')
+#     if len(string_list) < 3:
+#         return None
+#     else:
+#         return ' '.join(string_list[1:-1])
+#
+# print(array("1,2,3,4,5"))
+
+'''
+Определите функцию, которая удаляет дубликаты из массива неотрицательных чисел и возвращает его в качестве результата.
+
+Порядок следования должен оставаться прежним.
+
+Примеры:
+
+Input -> Output
+[1, 1, 2] -> [1, 2]
+[1, 2, 1, 1, 3, 2] -> [1, 2, 3]
+'''
+# def distinct(seq):
+#     set_seq = set()
+#     result = []
+#     for item in seq:
+#         if item not in set_seq:
+#             set_seq.add(item)
+#             result.append(item)
+#     return result
+
+'''
+Получаем значение символа в формате ASCII.
+
+С таблицей ASCII можно ознакомиться на http://www.asciitable.com/
+'''
+# def get_ascii(ch: str) -> int :
+#     return ord(ch)
+#
+# print(get_ascii('\n'))
+
+'''
+Каждому начинающему хакеру нужен псевдоним! The Phantom Phreak, Acid Burn, Zero Cool и Crash Override — вот несколько ярких примеров из фильма Hackers.
+
+Ваша задача — создать функцию, которая по имени и фамилии пользователя вернёт правильный псевдоним.
+
+Примечания:
+Два объекта, которые возвращают имя, состоящее из одного слова, в ответ на первую букву имени, 
+и один объект, возвращающий имя, состоящее из одного слова, в ответ на первую букву фамилии, уже заданы. 
+Дополнительные сведения см. в примерах ниже.
+
+Если первый символ любого из имён, переданных функции, не является буквой из A - Z, 
+вы должны вернуть "Your name must start with a letter from A - Z."
+
+Иногда люди могут забывать писать первую букву своего имени с заглавной, 
+поэтому ваша функция должна учитывать эти грамматические ошибки.
+
+Примеры
+# These two dictionaries are preloaded, you need to use them in your code
+FIRST_NAME = {'A': 'Alpha', 'B': 'Beta', 'C': 'Cache', ...}
+SURNAME = {'A': 'Analogue', 'B': 'Bomb', 'C': 'Catalyst' ...}
+
+alias_gen('Larry', 'Brentwood') == 'Logic Bomb'
+alias_gen('123abc', 'Petrovic') == 'Your name must start with a letter from A - Z.'
+'''
+def alias_gen(f_name: str, l_name: str):
+    FIRST_NAME = {
+        'A' : 'Alpha',
+        'B' : 'Beta',
+        'C' : 'Cache',
+        'D' : 'Data',
+        'E' : 'Echo',
+        'F' : 'Function',
+        'G' : 'Glitch',
+        'H' : 'Half-Life',
+        'I' : 'Ice',
+        'J' : 'Java',
+        'K' : 'Keystroke',
+        'L' : 'Logic',
+        'M' : 'Malware',
+        'N' : 'Nagware',
+        'O' : 'OS',
+        'P' : 'Phishing',
+        'Q' : 'Quantum',
+        'R' : 'Radical',
+        'S' : 'Strike',
+        'T' : 'Trojan',
+        'U' : 'Ultraviolet',
+        'V' : 'Vanilla',
+        'W' : 'WiFi',
+        'X' : 'Xerox',
+        'Y' : 'Y',
+        'Z' : 'Zero'
+    }
+    SURNAME = {
+        'A' : 'Analogue',
+        'B' : 'Bomb',
+        'C' : 'Catalyst',
+        'D' : 'Discharge',
+        'E' : 'Electron',
+        'F' : 'Faraday',
+        'G' : 'Gig',
+        'H' : 'Hacker',
+        'I' : 'IP',
+        'J' : 'Jabber',
+        'K' : 'Kernel',
+        'L' : 'Link',
+        'M' : 'MitM',
+        'N' : 'Nuke',
+        'O' : 'Overclock',
+        'P' : 'Payload',
+        'Q' : 'Quark',
+        'R' : 'Router',
+        'S' : 'Spy',
+        'T' : 'T-Rex',
+        'U' : 'Unit',
+        'V' : 'Virus',
+        'W' : 'Worm',
+        'X' : 'Xploit',
+        'Y' : 'Yob',
+        'Z' : 'Zombie'
+    }
+
+    letter_f_name = f_name[0].isalpha()
+    letter_l_name = l_name[0].isalpha()
+    # up_f_name = f_name[0] == f_name[0].upper()
+    # up_l_name = l_name[0] == l_name[0].upper()
+
+    is_valid = letter_f_name and letter_l_name
+
+    if is_valid:
+        first_name_alias = FIRST_NAME.get(f_name[0].upper())
+        last_name_alias = SURNAME.get(l_name[0].upper())
+        return f'{first_name_alias} {last_name_alias}'
+
+    else:
+        return f'Your name must start with a letter from A - Z.'
+
+print(alias_gen('123abc', 'Petrovic'))
