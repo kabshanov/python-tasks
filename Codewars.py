@@ -428,77 +428,188 @@ SURNAME = {'A': 'Analogue', 'B': 'Bomb', 'C': 'Catalyst' ...}
 alias_gen('Larry', 'Brentwood') == 'Logic Bomb'
 alias_gen('123abc', 'Petrovic') == 'Your name must start with a letter from A - Z.'
 '''
-def alias_gen(f_name: str, l_name: str):
-    FIRST_NAME = {
-        'A' : 'Alpha',
-        'B' : 'Beta',
-        'C' : 'Cache',
-        'D' : 'Data',
-        'E' : 'Echo',
-        'F' : 'Function',
-        'G' : 'Glitch',
-        'H' : 'Half-Life',
-        'I' : 'Ice',
-        'J' : 'Java',
-        'K' : 'Keystroke',
-        'L' : 'Logic',
-        'M' : 'Malware',
-        'N' : 'Nagware',
-        'O' : 'OS',
-        'P' : 'Phishing',
-        'Q' : 'Quantum',
-        'R' : 'Radical',
-        'S' : 'Strike',
-        'T' : 'Trojan',
-        'U' : 'Ultraviolet',
-        'V' : 'Vanilla',
-        'W' : 'WiFi',
-        'X' : 'Xerox',
-        'Y' : 'Y',
-        'Z' : 'Zero'
-    }
-    SURNAME = {
-        'A' : 'Analogue',
-        'B' : 'Bomb',
-        'C' : 'Catalyst',
-        'D' : 'Discharge',
-        'E' : 'Electron',
-        'F' : 'Faraday',
-        'G' : 'Gig',
-        'H' : 'Hacker',
-        'I' : 'IP',
-        'J' : 'Jabber',
-        'K' : 'Kernel',
-        'L' : 'Link',
-        'M' : 'MitM',
-        'N' : 'Nuke',
-        'O' : 'Overclock',
-        'P' : 'Payload',
-        'Q' : 'Quark',
-        'R' : 'Router',
-        'S' : 'Spy',
-        'T' : 'T-Rex',
-        'U' : 'Unit',
-        'V' : 'Virus',
-        'W' : 'Worm',
-        'X' : 'Xploit',
-        'Y' : 'Yob',
-        'Z' : 'Zombie'
-    }
+# def alias_gen(f_name: str, l_name: str):
+#     FIRST_NAME = {
+#         'A' : 'Alpha',
+#         'B' : 'Beta',
+#         'C' : 'Cache',
+#         'D' : 'Data',
+#         'E' : 'Echo',
+#         'F' : 'Function',
+#         'G' : 'Glitch',
+#         'H' : 'Half-Life',
+#         'I' : 'Ice',
+#         'J' : 'Java',
+#         'K' : 'Keystroke',
+#         'L' : 'Logic',
+#         'M' : 'Malware',
+#         'N' : 'Nagware',
+#         'O' : 'OS',
+#         'P' : 'Phishing',
+#         'Q' : 'Quantum',
+#         'R' : 'Radical',
+#         'S' : 'Strike',
+#         'T' : 'Trojan',
+#         'U' : 'Ultraviolet',
+#         'V' : 'Vanilla',
+#         'W' : 'WiFi',
+#         'X' : 'Xerox',
+#         'Y' : 'Y',
+#         'Z' : 'Zero'
+#     }
+#     SURNAME = {
+#         'A' : 'Analogue',
+#         'B' : 'Bomb',
+#         'C' : 'Catalyst',
+#         'D' : 'Discharge',
+#         'E' : 'Electron',
+#         'F' : 'Faraday',
+#         'G' : 'Gig',
+#         'H' : 'Hacker',
+#         'I' : 'IP',
+#         'J' : 'Jabber',
+#         'K' : 'Kernel',
+#         'L' : 'Link',
+#         'M' : 'MitM',
+#         'N' : 'Nuke',
+#         'O' : 'Overclock',
+#         'P' : 'Payload',
+#         'Q' : 'Quark',
+#         'R' : 'Router',
+#         'S' : 'Spy',
+#         'T' : 'T-Rex',
+#         'U' : 'Unit',
+#         'V' : 'Virus',
+#         'W' : 'Worm',
+#         'X' : 'Xploit',
+#         'Y' : 'Yob',
+#         'Z' : 'Zombie'
+#     }
+#
+#     letter_f_name = f_name[0].isalpha()
+#     letter_l_name = l_name[0].isalpha()
+#     # up_f_name = f_name[0] == f_name[0].upper()
+#     # up_l_name = l_name[0] == l_name[0].upper()
+#
+#     is_valid = letter_f_name and letter_l_name
+#
+#     if is_valid:
+#         first_name_alias = FIRST_NAME.get(f_name[0].upper())
+#         last_name_alias = SURNAME.get(l_name[0].upper())
+#         return f'{first_name_alias} {last_name_alias}'
+#
+#     else:
+#         return f'Your name must start with a letter from A - Z.'
+#
+# print(alias_gen('123abc', 'Petrovic'))
 
-    letter_f_name = f_name[0].isalpha()
-    letter_l_name = l_name[0].isalpha()
-    # up_f_name = f_name[0] == f_name[0].upper()
-    # up_l_name = l_name[0] == l_name[0].upper()
+'''
+Вы идёте с сыном в лес, чтобы посмотреть на обезьян. Вы знаете, что их там определённое количество (n), 
+но ваш сын слишком мал, чтобы просто оценить их количество, ему нужно начать считать их с 1.
 
-    is_valid = letter_f_name and letter_l_name
+Как хороший родитель, вы будете сидеть и считать вместе с ним. Учитывая число (n), 
+заполните массив всеми числами до этого числа включительно, но без нуля.
 
-    if is_valid:
-        first_name_alias = FIRST_NAME.get(f_name[0].upper())
-        last_name_alias = SURNAME.get(l_name[0].upper())
-        return f'{first_name_alias} {last_name_alias}'
+Например(Ввод -> Вывод):
 
-    else:
-        return f'Your name must start with a letter from A - Z.'
+10 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ 1 --> [1]
+'''
+# def monkey_count(n):
+#     return [i+1 for i in range(n)]
+#
+#
+# print(monkey_count(10))
+'''
+Вы — программист в SEO-компании. SEO-специалист вашей компании каждый день получает список всех ключевых слов проекта, 
+а затем ищет самые длинные ключевые слова для их анализа.
 
-print(alias_gen('123abc', 'Petrovic'))
+Вы получите список ключевых слов и должны будете написать простую функцию, 
+которая возвращает самые популярные ключевые слова и сортирует их в лексикографическом порядке.
+
+Например, вы могли бы получить:
+
+'key1', 'key2', 'key3', 'key n', 'bigkey2', 'bigkey1'
+И ваша функция должна вернуть:
+
+"'bigkey1', 'bigkey2'"
+'''
+#
+#
+# def the_biggest_search_keys(*args) :
+#     if not args :
+#         return "''"
+#
+#     count_list = {word : len(word) for word in args}
+#     max_count = max(count_list.values())
+#
+#     candidates = []
+#     for word in count_list :
+#         if count_list[word] == max_count :
+#             candidates.append(word)
+#
+#     sorted_candidates = sorted(candidates)
+#
+#     return ", ".join(f"'{word}'" for word in sorted_candidates)
+#
+#
+# print(the_biggest_search_keys('key1', 'key2', 'key3', 'key n', 'bigkey2', 'bigkey1'))
+'''
+Натан любит кататься на велосипеде.
+
+Поскольку Натан знает, что важно поддерживать водный баланс, он выпивает 0,5 литра воды за час езды на велосипеде.
+
+Вам дано время в часах, и вам нужно вычислить количество литров, которое выпьет Натан, округлив в меньшую сторону.
+
+Например:
+
+time = 3 ----> litres = 1
+
+time = 6.7---> litres = 3
+
+time = 11.8--> litres = 5
+'''
+# def litres(time):
+#     return int(time * 0.5)
+'''
+Дано число n. Нарисуйте лестницу, используя букву "I". Лестница должна быть n в высоту и n в ширину, причём самая высокая ступенька должна находиться в левом верхнем углу.
+
+Например , n = 3 приведет к:
+
+"I\n I\n  I"
+или напечатанный:
+
+I
+ I
+  I
+Другой пример, лестница из 7 ступеней должна быть нарисована следующим образом:
+
+I
+ I
+  I
+   I
+    I
+     I
+      I
+'''
+# def draw_stairs(n):
+#     result = []
+#     for i in range(n):
+#         result.append(' ' * i + 'I')
+#     return '\n'.join(result)
+'''
+Компания, в которой вы работаете, только что получила контракт на создание платёжного шлюза. Чтобы ускорить процесс, вы вызвались создать функцию, которая будет принимать число с плавающей точкой и возвращать сумму в долларах и центах.
+
+39.99 becomes $39.99
+
+Остальные члены вашей команды позаботятся о том, чтобы аргумент был очищен перед передачей в вашу функцию, хотя вам нужно будет учитывать добавление конечных нулей, если они отсутствуют (хотя вам не придётся беспокоиться о пропущенном периоде).
+
+Примеры:
+
+3 needs to become $3.00
+
+3.1 needs to become $3.10
+'''
+def format_money(amount):
+    return f'${amount}' if amount == float else f"${amount:.2f}"
+

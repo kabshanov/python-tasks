@@ -14,6 +14,7 @@
 формате с двумя знаками после запятой.
 '''
 from multiprocessing.resource_tracker import unregister
+from operator import index
 from time import asctime
 
 # def total_sum():
@@ -632,27 +633,280 @@ A, после чего автоматически перейдет на нову
 что программа корректно обрабатывает ошибки 
 при работе с обоими файлами
 '''
-def delete_comment():
-    name_file = input('Введите название файла для обработки: ')
-    new_name_file = input('Введите новое название файла после обработки: ')
-    new_text_file = []
+# def delete_comment():
+#     name_file = input('Введите название файла для обработки: ')
+#     new_name_file = input('Введите новое название файла после обработки: ')
+#     new_text_file = []
+#
+#     # Открываем и читаем файл, создаем список
+#     with open(name_file, 'r', encoding='utf-8') as file:
+#         text_file = list(file.readlines())
+#
+#     # Запускаем цикл для удаления > # и сохраняем результат в новый список
+#     for strings in text_file:
+#         if '#' in strings:
+#             strings = strings.split('#')[0].rstrip()
+#         new_text_file.append(strings)
+#
+#     new_text_file_string = ''.join(new_text_file)
+#
+#     with open(new_name_file, 'w', encoding='utf-8') as out_file:
+#         out_file.write(new_text_file_string)
+#
+#     return new_name_file
+#
+#
+# print(delete_comment())
+'''
+Цель задания — научиться делать кортеж «плоским» или возвращать список, 
+состоящий из элементов всех подсписков исходного кортежа.
 
-    # Открываем и читаем файл, создаем список
-    with open(name_file, 'r', encoding='utf-8') as file:
-        text_file = list(file.readlines())
+Задание
+Напишите функцию flatten_tuple, которая принимает на вход кортеж tup, 
+содержащий внутри себя другие кортежи (подсписки). 
+Функция должна вернуть список, состоящий из всех элементов подсписков.
+'''
+# # пример вложенного (двухуровневого) кортежа
+# demo_tuple = (
+#     (1, 2, 3),          # числа
+#     ('a', 'b'),         # буквы
+#     (True, False, None) # булевы значения и None
+# )
+#
+# # твоя функция
+# def flatten_tuple(tup):
+#     return [el for subarr in tup for el in subarr]
+#
+# # проверяем
+# result = flatten_tuple(demo_tuple)
+# print(result)           # → [1, 2, 3, 'a', 'b', True, False, None]
+'''
+Домашнее задание №51: Как посчитать сумму с условием
+Цель задания — научиться считать сумму с условием с помощью list comprehentions.
 
-    # Запускаем цикл для удаления > # и сохраняем результат в новый список
-    for strings in text_file:
-        if '#' in strings:
-            strings = strings.split('#')[0].rstrip()
-        new_text_file.append(strings)
+Задание
+Напишите функцию sum_positive_numbers, 
+которая принимает список целых чисел numbers 
+и возвращает сумму только положительных чисел из данного списка.
+'''
+# num = [1, -1, 3, 5, -5]
+# def sum_positive_numbers(numbers):
+#     return sum([num for num in numbers if num > 0])
+#
+# print(sum_positive_numbers(num))
+'''
+Цель задания — научиться обрабатывать массив с условием с помощью list comprehentions.
 
-    new_text_file_string = ''.join(new_text_file)
+Задание
+Напишите функцию process_array, которая принимает список целых чисел numbers и возвращает новый список, 
+содержащий только положительные числа, умноженные на 2.
+'''
+# def process_array(numbers):
+#     return [num * 2 for num in numbers if num > 0]
+'''
+Цель задания — научиться формировать словарь с помощью list comprehentions.
 
-    with open(new_name_file, 'w', encoding='utf-8') as out_file:
-        out_file.write(new_text_file_string)
+Задание
+Напишите функцию list_to_dict, которая принимает список ключей и список значений. 
+А затем возвращает словарь, сформированный из этих списков. 
+Используйте генератор списка и специальную функцию.
+'''
+# a = [1, 2]
+# b = ['a', 'b']
+# def list_to_dict(list_key, list_value):
+#     return {key: value for key, value in zip(list_key, list_value)}
+#
+# print(list_to_dict(a, b))
+'''
+Цель задания — научиться найти максимальное значение меньше заданного.
 
-    return new_name_file
+Задание
+Создайте функцию lim_max(nums, limit), которая принимает на вход кортеж чисел nums и ограничение limit.
+Инициализируйте переменную max_value со значением -1, которая будет хранить максимальное значение, строго меньшее limit.
+Пройдитесь циклом по элементам кортежа nums.
+Внутри цикла проверьте каждый элемент кортежа на условие: элемент должен быть строго меньше limit и больше текущего значения max_value.
+Если условие выполняется, обновите значение max_value на текущий элемент.
+По окончанию цикла, верните значение max_value.
+'''
+# def lim_max(nums, limit):
+#     max_value = -1
+#     for num in nums:
+#         if num < limit and num > max_value:
+#             max_value = num
+#
+#     return max_value
+#
+
+'''
+Напишите функцию check_list, которая принимает на вход переменную var и проверяет, является ли она списком.
+def check_list(var):
+    return isinstance(var, list)
+
+'''
+'''
+Напишите функцию get_value_by_index, которая принимает на вход список ref_list и индекс index. 
+Функция должна вернуть значение списка ref_list по указанному индексу, 
+если список ref_list не равен None, является списком (а не другим типом данных) 
+и индекс не выходит за пределы длины списка. 
+В любом ином случае верните значение None.
+'''
+# def get_value_by_index(ref_list, index):
+#     if ref_list is not None and isinstance(ref_list, list) and 0 <= index < len(ref_list):
+#         return ref_list[index]
+#     else:
+#         return None
+'''
+Напишите функцию list_reorder, которая принимает на вход список списков list_of_lists. 
+Функция должна изменить структуру списка, так чтобы элементы из вложенных списков стали элементами одного общего списка.
+'''
+# list_1 = [1, 2]
+# list_2 = [3, 4]
+# list_3 = [5, 6]
+# def list_reorder(*list_of_lists):
+#     result = [el for subarr in list_of_lists for el in subarr]
+#     return result
+#
+# print(list_reorder(list_1, list_2, list_3))
+'''
+Напишите функцию list_insert, которая принимает на вход: 
+список ref_list, индекс start, число num, и количество повторений rep. 
+Функция должна вставить число num в список ref_list начиная с позиции start, повторяя его rep раз.
+'''
+# ref_list = [1,2,3]
+# num = 22
+# start = 2
+# rep = 5
+#
+# def list_insert(ref_list, start, num, rep):
+#     if len(ref_list) < start:
+#         return -1
+#
+#     ref_list[start:start] = [num,] * rep
+#
+#     return ref_list
+#
+# # Проверка
+# print(list_insert(ref_list, start, num, rep))
+'''
+Напишите функцию generate_values, которая принимает на вход начальное значение start и конечное значение end. 
+Функция должна вернуть список значений в заданном числовом интервале от start до end (включительно).
+'''
+# def generate_values1(start, end):
+#     return [el for el in range(start, end-1, -1)]
+#
+# print(generate_values1(10, 1))
+#
+# def generate_values(start, end):
+#     fwd = 1 if start <= end else -1
+#     return list(range(start, end + 1 * fwd, 1 * fwd))
+#
+# print(generate_values(10, 1))
+'''
+Даны два словаря dict1 и dict2. 
+Напишите функцию merge_dicts, которая объединит эти два словаря в один с помощью оператора объединения и вернет результат.
+'''
+# dict1 = {1: 2}
+# dict2 = {'aa': 'a'}
+# def merge_dicts(dict1, dict2):
+#     return dict1 | dict2
+#
+# print(merge_dicts(dict1,dict2))
+
+'''
+Даны два словаря dict1 и dict2. Напишите функцию merge_dicts, которая объединит эти два словаря. 
+В начале результирующего словаря должны идти ключи dict1. 
+Значения с общими ключами должны стать элементами общего списка в результирующем словаре. 
+Функция merge_dicts должна вернуть результирующий словарь.
+'''
+# dict1 = {'a': 1, 'b': 2}
+# dict2 = {'b': 3, 'c': 4}
+#
+#
+# def merge_dicts(dict1, dict2):
+#     result = dict1.copy()
+#
+#     for d2 in dict2:
+#         if d2 in result:
+#             result[d2] = [result[d2], dict2[d2]]
+#         else:
+#             result[d2] = dict2.get(d2)
+#
+#     return result
+#
+# print(merge_dicts(dict1, dict2))
+'''
+Напишите функцию count_elements, которая принимает на вход коллекцию 
+(список, кортеж, множество или строку) и возвращает словарь. 
+В нем ключами должны быть уникальные элементы коллекции, а значениями - количество их вхождений в данную коллекцию. 
+В результате верните получивышийся словарь.
+'''
+a= ['a', 'b', 'c', 'a']
+# def count_elements(array):
+#     result = {}
+#
+#     for el in array:
+#         if el not in result:
+#             result[el] = 1
+#         else:
+#             result[el] += 1
+#
+#     return result
+#
+#
+# print(count_elements(a))
+'''
+Напишите функцию get_value, которая принимает на вход словарь data и ключ key. 
+Функция должна возвращать значение из словаря data, соответствующее переданному ключу key. 
+Если ключ отсутствует в словаре, функция должна возвращать строку "Key not found".
+'''
+# def get_value(data: dict, key):
+#     if key in data:
+#          return data[key]
+#     else:
+#         return f'Key not found'
+#
+# print(get_value({1: 2, 'a' : 'abc'}, 1))
+'''
+Напишите функцию sort_dict, которая принимает на вход словарь d, 
+тип сортировки type (keywise или valuewise) 
+и порядок сортировки order (asc или desc). 
+Функция должна возвращать отсортированный словарь по ключам или значениям, 
+в зависимости от переданных параметров.
+'''
+d = {'b': 3, 'a': 1, 'c': 2}
+
+def sort_dict(d, type, order):
+    if type == "keywise":
+        idx = 0
+    else:
+        idx = 1
+
+    if order == "desc":
+        reverse_check = True
+    else:
+        reverse_check = False
+
+    return dict(sorted(d.items(), key=lambda x: x[idx], reverse=reverse_check))
+
+print(sort_dict(d, type="valuewise", order="asc"))
 
 
-print(delete_comment())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
