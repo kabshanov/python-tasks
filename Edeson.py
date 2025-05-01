@@ -873,40 +873,89 @@ a= ['a', 'b', 'c', 'a']
 Функция должна возвращать отсортированный словарь по ключам или значениям, 
 в зависимости от переданных параметров.
 '''
-d = {'b': 3, 'a': 1, 'c': 2}
+# d = {'b': 3, 'a': 1, 'c': 2}
 
-def sort_dict(d, type, order):
-    if type == "keywise":
-        idx = 0
-    else:
-        idx = 1
-
-    if order == "desc":
-        reverse_check = True
-    else:
-        reverse_check = False
-
-    return dict(sorted(d.items(), key=lambda x: x[idx], reverse=reverse_check))
-
-print(sort_dict(d, type="valuewise", order="asc"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# def sort_dict(d, type, order):
+#     if type == "keywise":
+#         idx = 0
+#     else:
+#         idx = 1
+#
+#     if order == "desc":
+#         reverse_check = True
+#     else:
+#         reverse_check = False
+#
+#     return dict(sorted(d.items(), key=lambda x: x[idx], reverse=reverse_check))
+#
+# print(sort_dict(d, type="valuewise", order="asc"))
+'''
+Напишите функцию find_unique_elements, которая принимает на вход список lst 
+и возвращает список уникальных элементов этого списка. 
+Используйте встроенные функции. Отсортируйте результат по возрастанию.
+'''
+# def find_unique_elements(lst: list) :
+#     return sorted(list(set(lst)), key=lambda x : x)
+#
+#
+# print(find_unique_elements(a))
+# a = [1, 2, 2, 3]
+'''
+Напишите функцию sums_by_quarter, которая принимает список чисел (показаний термометра с января по декабрь) 
+и возвращает список сумм значений по кварталам. Каждый квартал состоит из трех месяцев, 
+и список должен быть разбит на соответствующие кварталам элементы. 
+При этом, каждый квартал должен быть представлен одним числом - суммой элементов в этом квартале.
+'''
+# def sums_by_quarter(lst: list) :
+#     result = []
+#     quarter_1 = sum(lst[0 :3])
+#     quarter_2 = sum(lst[3 :6])
+#     quarter_3 = sum(lst[6 :9])
+#     quarter_4 = sum(lst[9 :12])
+#     result.extend([quarter_1, quarter_2, quarter_3, quarter_4])
+#     return result
+#
+#
+# t = [2, 3, 5, 10, 12, 15, 20, 22, 18, 10, 5, 1]
+# print(sums_by_quarter(t))
+'''
+Напишите функцию sorted_unique_list, которая принимает список чисел и возвращает список, 
+отсортированный по возрастанию и без повторяющихся элементов. Используйте специальную функцию.
+'''
+# def sorted_unique_list(lst):
+#     return list(sorted(set(lst)))
+'''
+Напишите функцию count_frequency, которая принимает список имен (строк) и возвращает словарь, 
+содержащий количество упоминаний каждого имени в списке. 
+Словарь должен быть отсортирован по ключам в алфавитном порядке.
+'''
+# def count_frequency(names):
+#     frequency = {}
+#     for name in names:
+#         frequency[name] = frequency.get(name, 0) + 1
+#
+#     return dict(sorted(frequency.items()))
+#
+#
+# names_ = [
+#     "Анна", "Дмитрий", "Мария", "Алексей", "Ольга",
+#     "Иван", "Анна", "Сергей", "Мария", "Елена",
+#     "Алексей", "Николай", "Юлия", "Иван", "Татьяна"
+# ]
+# print(count_frequency(names_))
+'''
+Напишите функцию flatten_nested_list, которая принимает в качестве аргумента вложенный список (список списков) 
+и возвращает плоский список, состоящий из всех элементов вложенных списков.
+'''
+# def flatten_nested_list(lst):
+#     result = []
+#     for item in lst:
+#         if isinstance(item, list):
+#             result.extend(flatten_nested_list(item))  # рекурсивно
+#         else:
+#             result.append(item)
+#     return result
+#
+# lst = [[42, 17, 93], [8, 66, 77, 59, 15], [100, 3], [29, 56, 91, 74], [88, 2, 36, 79, 14]]
+#
+# print(flatten_nested_list(lst))

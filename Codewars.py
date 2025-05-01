@@ -17,6 +17,8 @@
 Например, ввод "pOLitiCIaN" по-прежнему должен возвращать "Your tax dollars".
 
 '''
+from importlib.metadata import pass_none
+
 # drink_by_profession = {
 #     "Jabroni": "Patron Tequila",
 #     "School Counselor": "Anything with Alcohol",
@@ -610,6 +612,131 @@ I
 
 3.1 needs to become $3.10
 '''
-def format_money(amount):
-    return f'${amount}' if amount == float else f"${amount:.2f}"
+# def format_money(amount):
+#     return f'${amount}' if amount == float else f"${amount:.2f}"
+'''
+Вы должны создать функцию spread, которая принимает функцию и список аргументов, которые будут применяться к этой функции. 
+Вы должны сделать так, чтобы эта функция возвращала результат вызова заданной функции/лямбда-выражения с заданными аргументами.
+
+например:
+
+spread(someFunction, [1, true, "Foo", "bar"] ) 
+# is the same as...
+someFunction(1, true, "Foo", "bar")
+'''
+# def spread(func, args):
+#     return func(*args)
+#
+# def someFunction(a, b, c, d):
+#     return f"{a}, {b}, {c}, {d}"
+
+# print(spread(someFunction, [1, True, "Foo", "bar"]))
+'''
+Напишите функцию unpack(), которая распаковывает list элементов, 
+которые могут содержать объекты(int, str, list, tuple, dict, set) внутри друг друга 
+без какой-либо заранее заданной глубины, то есть элементы могут находиться на разных уровнях.
+
+Пример:
+
+unpack([None, [1, ({2, 3}, {'foo': 'bar'})]]) == [None, 1, 2, 3, 'foo', 'bar']
+Примечание: вам не нужно беспокоиться о порядке элементов, 
+особенно при распаковке dict или set. Просто распакуйте все элементы.
+'''
+# def unpack(lst):
+#     result = []
+#     for item in lst:
+#         if isinstance(item, (list, tuple, set)):
+#             result.extend(unpack(item))  # рекурсия для list/tuple/set
+#         elif isinstance(item, dict):
+#             # Рекурсивно распаковываем и ключи, и значения
+#             result.extend(unpack(item.keys()))
+#             result.extend(unpack(item.values()))
+#         else:
+#             result.append(item)
+#     return result
+#
+#
+# print(unpack([None, [1, ({2, 3}, {'foo': 'bar'})]]))
+'''
+Создайте функцию под названием _if с тремя аргументами: значением bool и двумя функциями (без параметров): func1 и func2
+
+Если bool истинно, то следует вызвать func1, в противном случае вызовите func2.
+
+Пример:
+def truthy(): 
+  print("True")
+  
+def falsey(): 
+  print("False")
+  
+_if(True, truthy, falsey)
+# prints 'True' to the console
+'''
+# def truthy() :
+#     print("True")
+#
+#
+# def falsey() :
+#     print("False")
+#
+#
+# def _if(bool, func1, func2) :
+#     return func1() if bool else func2()
+#
+#
+# _if(True, truthy, falsey)
+'''
+Напишите функцию с именем numbers.
+
+Функция должна возвращать True, 
+если все переданные ей параметры являются целыми числами 
+или числами с плавающей точкой. 
+В противном случае функция должна возвращать False.
+
+Функция должна принимать любое количество параметров.
+
+Пример использования:
+
+numbers(1, 4, 3, 2, 5); # True
+numbers(1, "a", 3); # False
+numbers(1, 3, None); # False
+numbers(1.23, 5.6, 3.2) # True
+'''
+def numbers(*args):
+    for item in args:
+        if not isinstance(item, (int, float)):
+            return False
+    return True
+
+print(numbers((1, 4, 3, 2, 5)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
