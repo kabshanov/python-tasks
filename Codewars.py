@@ -17,8 +17,6 @@
 Например, ввод "pOLitiCIaN" по-прежнему должен возвращать "Your tax dollars".
 
 '''
-from importlib.metadata import pass_none
-
 # drink_by_profession = {
 #     "Jabroni": "Patron Tequila",
 #     "School Counselor": "Anything with Alcohol",
@@ -502,241 +500,370 @@ alias_gen('123abc', 'Petrovic') == 'Your name must start with a letter from A - 
 #
 #     else:
 #         return f'Your name must start with a letter from A - Z.'
+'''
+'world'  =>  'dlrow'
+'word'   =>  'drow'
+'''
+# def solution(string:str):
+#     print(''.join(list(reversed(string))))
+#     print(string[::-1])
 #
-# print(alias_gen('123abc', 'Petrovic'))
+# solution('abc')
+'''
+В этом простом задании вам дано число, которое нужно сделать отрицательным. Но, может быть, число уже отрицательное?
+
+Примеры
+make_negative(1);  # return -1
+make_negative(-5); # return -5
+make_negative(0);  # return 0
+Примечания
+Это число уже может быть отрицательным, и в этом случае никаких изменений не требуется.
+Ноль (0) не проверяется на наличие какого-либо конкретного знака. Отрицательные нули не имеют математического смысла.
+'''
+# def make_negative(i):
+#     # if number > 0:
+#     #     result = number * -1
+#     #     return result
+#     # else:
+#     #     return number
+#     return i * -1 if i > 0 else i
+#
+# print(make_negative(10))
+'''
+Задача
+Вы получаете массив чисел и возвращаете сумму всех положительных чисел.
+
+Пример
+[1, -4, 7, 12] => 
+1
++
+7
++
+12
+=
+20
+1+7+12=20
+Примечание
+Если суммировать нечего, сумма по умолчанию равна 0.
+'''
+# def positive_sum(b):
+#     return sum([a for a in b if a > 0])
+#
+# print(positive_sum([1,-2,3,4,5]))
 
 '''
-Вы идёте с сыном в лес, чтобы посмотреть на обезьян. Вы знаете, что их там определённое количество (n), 
-но ваш сын слишком мал, чтобы просто оценить их количество, ему нужно начать считать их с 1.
-
-Как хороший родитель, вы будете сидеть и считать вместе с ним. Учитывая число (n), 
-заполните массив всеми числами до этого числа включительно, но без нуля.
-
-Например(Ввод -> Вывод):
-
-10 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
- 1 --> [1]
+Это довольно просто. Ваша задача — создать функцию, которая удаляет первый и последний символы строки. 
+Вам даётся один параметр — исходная строка. Вам не нужно беспокоиться о строках, в которых меньше двух символов.
 '''
-# def monkey_count(n):
-#     return [i+1 for i in range(n)]
+# # мое решение
+# def remove_char(s):
+#     return s[1:-1]
 #
-#
-# print(monkey_count(10))
+# print(remove_char('place'))
+
 '''
-Вы — программист в SEO-компании. SEO-специалист вашей компании каждый день получает список всех ключевых слов проекта, 
-а затем ищет самые длинные ключевые слова для их анализа.
+Дополните функцию вычисления суммы квадратов так, чтобы она возводила в квадрат каждое переданное ей число, а затем суммировала результаты.
 
-Вы получите список ключевых слов и должны будете написать простую функцию, 
-которая возвращает самые популярные ключевые слова и сортирует их в лексикографическом порядке.
-
-Например, вы могли бы получить:
-
-'key1', 'key2', 'key3', 'key n', 'bigkey2', 'bigkey1'
-И ваша функция должна вернуть:
-
-"'bigkey1', 'bigkey2'"
+Например, для [1, 2, 2] он должен вернуть 9, потому что 
 '''
-#
-#
-# def the_biggest_search_keys(*args) :
-#     if not args :
-#         return "''"
-#
-#     count_list = {word : len(word) for word in args}
-#     max_count = max(count_list.values())
-#
-#     candidates = []
-#     for word in count_list :
-#         if count_list[word] == max_count :
-#             candidates.append(word)
-#
-#     sorted_candidates = sorted(candidates)
-#
-#     return ", ".join(f"'{word}'" for word in sorted_candidates)
-#
-#
-# print(the_biggest_search_keys('key1', 'key2', 'key3', 'key n', 'bigkey2', 'bigkey1'))
+# def absurd_min(nums):
+#     s=''.join(str(i)+' ' for i in nums).rstrip()
+#     arr,tmp,sgn=[],0,1
+#     for ch in s:
+#         ((ch=='-') and (sgn:=-1)) or ((ch>'/') and (tmp:=tmp*10+(ord(ch)&15))) or (arr.append(sgn*tmp),tmp:=0,sgn:=1)
+#     arr.append(sgn*tmp)
+#     Y=lambda f:(lambda x:f(lambda *a:x(x)(*a)))(lambda x:f(lambda *a:x(x)(*a)))
+#     return Y(lambda r:lambda seq,m=None,i=0:m if i==len(seq) else r(seq,seq[i] if (m is None or seq[i]<m) else m,i+1))(tuple(arr))
 '''
-Натан любит кататься на велосипеде.
+Напишите функцию, которая удаляет пробелы из строки, а затем возвращает полученную строку.
 
-Поскольку Натан знает, что важно поддерживать водный баланс, он выпивает 0,5 литра воды за час езды на велосипеде.
+Примеры (Ввод -> Вывод):
 
-Вам дано время в часах, и вам нужно вычислить количество литров, которое выпьет Натан, округлив в меньшую сторону.
-
-Например:
-
-time = 3 ----> litres = 1
-
-time = 6.7---> litres = 3
-
-time = 11.8--> litres = 5
+"8 j 8   mBliB8g  imjB8B8  jl  B" -> "8j8mBliB8gimjB8B8jlB"
+"8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd" -> "88Bifk8hB8BB8BBBB888chl8BhBfd"
+"8aaaaa dddd r     " -> "8aaaaaddddr"
 '''
-# def litres(time):
-#     return int(time * 0.5)
+# def no_space(x):
+#     return x.replace(' ', '')
+#
+# print(no_space('8 j 8   mBliB8g  imjB8B8  jl  B'))
+
+# def are_you_playing_banjo(name):
+#     # Implement me!
+#     return name + " plays banjo" if name[0] == 'r' or name[0] == 'R' else name + " does not play banjo"
+#
+# print(are_you_playing_banjo('martin'))
 '''
-Дано число n. Нарисуйте лестницу, используя букву "I". Лестница должна быть n в высоту и n в ширину, причём самая высокая ступенька должна находиться в левом верхнем углу.
+Учитывая две строки, состоящие из + и -, верните новую строку, которая показывает, как эти две строки взаимодействуют следующим образом:
 
-Например , n = 3 приведет к:
+Когда позитив и положительные стороны взаимодействуют, они остаются позитивными.
+Когда негативы взаимодействуют, они остаются негативными.
+Но когда отрицательные и положительные заряды взаимодействуют, они становятся нейтральными и отображаются в виде числа 0.
+Отработанный Пример
+("+-+", "+--") ➞ "+-0"
+# Compare the first characters of each string, then the next in turn.
+# "+" against a "+" returns another "+".
+# "-" against a "-" returns another "-".
+# "+" against a "-" returns "0".
+# Return the string of characters.
+Примеры
+("--++--", "++--++") ➞ "000000"
 
-"I\n I\n  I"
-или напечатанный:
+("-+-+-+", "-+-+-+") ➞ "-+-+-+"
 
-I
- I
-  I
-Другой пример, лестница из 7 ступеней должна быть нарисована следующим образом:
-
-I
- I
-  I
-   I
-    I
-     I
-      I
+("-++-", "-+-+") ➞ "-+00"
 '''
-# def draw_stairs(n):
+# мое решение
+# def neutralise(s1: str, s2: str):
 #     result = []
-#     for i in range(n):
-#         result.append(' ' * i + 'I')
-#     return '\n'.join(result)
+#     for i, _s1 in enumerate(s1):
+#         if _s1 == '-' and s2[i] =='-':
+#             result.append('-')
+#         elif _s1 == '+' and s2[i] =='+':
+#             result.append('+')
+#         elif _s1 == '-' and s2[i] =='+':
+#             result.append('0')
+#         else:
+#             result.append('0')
+#     return ''.join(result)
+#
+# print(neutralise("-+-+-+", "-+-+-+"))
 '''
-Компания, в которой вы работаете, только что получила контракт на создание платёжного шлюза. Чтобы ускорить процесс, вы вызвались создать функцию, которая будет принимать число с плавающей точкой и возвращать сумму в долларах и центах.
+Наша футбольная команда завершила чемпионат.
 
-39.99 becomes $39.99
+Результаты матчей нашей команды записываются в виде набора строк. 
+Каждый матч представлен строкой в формате "x:y", где x — счёт нашей команды, а y — счёт соперника.
 
-Остальные члены вашей команды позаботятся о том, чтобы аргумент был очищен перед передачей в вашу функцию, хотя вам нужно будет учитывать добавление конечных нулей, если они отсутствуют (хотя вам не придётся беспокоиться о пропущенном периоде).
+Например: ["3:1", "2:2", "0:1", ...]
+
+Очки начисляются за каждый матч следующим образом:
+
+если x > y: 3 очка (победа)
+если x < y: 0 очков (проигрыш)
+если x = y: 1 очко (ничья)
+Нам нужно написать функцию, которая принимает этот набор данных и возвращает количество очков, 
+набранных нашей командой (x) в чемпионате по приведённым выше правилам.
+
+Примечания:
+
+наша команда всегда проводит 10 матчей в чемпионате
+0 <= x <= 4
+0 <= y <= 4
+'''
+# мое решение
+# def points(games):
+#     result = []
+#
+#     for game in games:
+#         x = game[0]
+#         y = game[2]
+#         if x > y:
+#             result.append(3)
+#         elif x < y:
+#             result.append(0)
+#         else:
+#             result.append(1)
+#
+#     sum_result = sum(result)
+#
+#     return sum_result
+#
+# print(points(['1:0','2:0','3:0','4:0','2:1','3:1','4:1','3:2','4:2','4:3']))
+'''
+Если ты не можешь заснуть, просто посчитай овец!!
+
+Задача:
+Например, если дано неотрицательное целое число 3, верните строку с бормотанием: "1 sheep...2 sheep...3 sheep...". 
+Ввод всегда будет корректным, то есть без отрицательных целых чисел.
+'''
+# def count_sheep(n):
+#     result = []
+#     for i in range(1, n+1):
+#         result.append(f'{i} sheep...')
+#     return ''.join(result)
+#
+# print(count_sheep(3))
+'''
+Дополните решение так, чтобы оно возвращало true, 
+если первый переданный аргумент (строка) заканчивается вторым аргументом (тоже строкой).
 
 Примеры:
 
-3 needs to become $3.00
-
-3.1 needs to become $3.10
+solution('abc', 'bc') # returns true
+solution('abc', 'd') # returns false
 '''
-# def format_money(amount):
-#     return f'${amount}' if amount == float else f"${amount:.2f}"
-'''
-Вы должны создать функцию spread, которая принимает функцию и список аргументов, которые будут применяться к этой функции. 
-Вы должны сделать так, чтобы эта функция возвращала результат вызова заданной функции/лямбда-выражения с заданными аргументами.
-
-например:
-
-spread(someFunction, [1, true, "Foo", "bar"] ) 
-# is the same as...
-someFunction(1, true, "Foo", "bar")
-'''
-# def spread(func, args):
-#     return func(*args)
+# def solution(text, ending):
+#     return text.endswith(ending)
 #
-# def someFunction(a, b, c, d):
-#     return f"{a}, {b}, {c}, {d}"
-
-# print(spread(someFunction, [1, True, "Foo", "bar"]))
+#
+#
+# print(solution('abc', 'd'))
 '''
-Напишите функцию unpack(), которая распаковывает list элементов, 
-которые могут содержать объекты(int, str, list, tuple, dict, set) внутри друг друга 
-без какой-либо заранее заданной глубины, то есть элементы могут находиться на разных уровнях.
+Create a function add(n)/Add(n) which returns a function that always adds n to any number
 
-Пример:
+Note for Java: the return type and methods have not been provided to make it a bit more challenging.
 
-unpack([None, [1, ({2, 3}, {'foo': 'bar'})]]) == [None, 1, 2, 3, 'foo', 'bar']
-Примечание: вам не нужно беспокоиться о порядке элементов, 
-особенно при распаковке dict или set. Просто распакуйте все элементы.
+add_one = add(1)
+add_one(3)  # 4
+
+add_three = add(3)
+add_three(3) # 6
 '''
-# def unpack(lst):
+# def add(n):
+#     def inner(x):
+#         return x + n
+#     return inner
+#
+# add_one = add(1)  # теперь add_one — функция, которая делает x + 1
+# print(add_one(3))        # → 3 + 1 = 4
+'''
+Напишите функцию factory, которая принимает число в качестве параметра и возвращает другую функцию.
+
+Возвращаемая функция должна принимать в качестве параметра массив чисел и возвращать массив этих чисел, 
+умноженных на число, переданное в первую функцию.
+
+В приведённом ниже примере 5 — это число, переданное в первую функцию. 
+Таким образом, она возвращает функцию, которая принимает массив и умножает все его элементы на пять.
+
+Переводы и комментарии (и положительные отзывы) приветствуются!
+
+Пример
+fives = factory(5)          # returns a function - fives
+my_array = [1, 2, 3]
+fives(my_array)             # returns [5, 10, 15]
+'''
+# # def factory(x):
+# #     def inner(lst):
+# #         return [el * x for el in lst]
+# #     return inner
+# def factory(x):
+#     return lambda lst: [el * x for el in lst]
+#
+#
+#
+# fives = factory(5)          # returns a function - fives
+# my_array = [1, 2, 3]
+# print(fives(my_array))       # returns [5, 10, 15]
+'''
+Для заданного списка цифр 0 до 9 верните список с теми же цифрами в том же порядке, но со всеми 0 в паре. 
+При соединении двух 0 получается один 0 на месте первого.
+
+Примеры
+input: [0, 1, 0, 2]
+paired: ^-----^
+    -> [0, 1,   2]
+  kept: ^
+
+input: [0, 1, 0, 0]
+paired: ^-----^
+    -> [0, 1,    0]
+  kept: ^        ^
+
+input: [1, 0, 7, 0, 1]
+paired:    ^-----^
+    -> [1, 0, 7,    1]
+  kept:    ^
+
+input: [0, 1, 7, 0, 2, 2, 0, 0, 1, 0]
+paired: ^--------^        ^--^
+    -> [0, 1, 7,    2, 2, 0,    1, 0]
+  kept: ^                 ^        ^
+Примечания
+Соединение происходит слева направо. При каждом соединении второе 0 всегда будет соединено с первым (справа налево)
+0сгенерированные в результате сопряжения файлы не могут быть сопряжены повторно
+(если не применимо: ) не изменяйте входной массив, иначе вы не пройдете тесты
+'''
+# def pair_zeros(arr):
 #     result = []
-#     for item in lst:
-#         if isinstance(item, (list, tuple, set)):
-#             result.extend(unpack(item))  # рекурсия для list/tuple/set
-#         elif isinstance(item, dict):
-#             # Рекурсивно распаковываем и ключи, и значения
-#             result.extend(unpack(item.keys()))
-#             result.extend(unpack(item.values()))
+#     count = 0
+#     for el in arr:
+#         if el == 0:
+#             if count % 2 == 0:
+#                 result.append(el)
+#                 count += 1
+#             else:
+#                 count += 1
 #         else:
-#             result.append(item)
+#             result.append(el)
 #     return result
 #
-#
-# print(unpack([None, [1, ({2, 3}, {'foo': 'bar'})]]))
+# print(pair_zeros([0, 0, 0]))
 '''
-Создайте функцию под названием _if с тремя аргументами: значением bool и двумя функциями (без параметров): func1 и func2
+Чтобы выполнить это задание, вам нужно создать функцию multiplyAll/multiply_all, 
+которая принимает в качестве аргумента массив целых чисел. 
+Эта функция должна возвращать другую функцию, 
+которая принимает в качестве аргумента одно целое число и возвращает новый массив.
 
-Если bool истинно, то следует вызвать func1, в противном случае вызовите func2.
+Возвращаемый массив должен состоять из каждого элемента первого массива, умноженного на целое число.
 
 Пример:
-def truthy(): 
-  print("True")
-  
-def falsey(): 
-  print("False")
-  
-_if(True, truthy, falsey)
-# prints 'True' to the console
+
+multiply_all([1, 2, 3])(2); // => [2, 4, 6]
+Вы не должны изменять исходный массив.
 '''
-# def truthy() :
-#     print("True")
+# def multiplyAll(lst):
+#     return lambda n: [el * n for el in lst]
 #
-#
-# def falsey() :
-#     print("False")
-#
-#
-# def _if(bool, func1, func2) :
-#     return func1() if bool else func2()
-#
-#
-# _if(True, truthy, falsey)
+# lst = multiplyAll([1, 2, 3])
+# print(lst(2))
 '''
-Напишите функцию с именем numbers.
+Вам будет предоставлен массив объектов (ассоциативных массивов в PHP), представляющих данные о разработчиках, 
+которые зарегистрировались для участия в следующем собрании программистов, которое вы организуете. 
+Список упорядочен в соответствии с тем, кто зарегистрировался первым.
 
-Функция должна возвращать True, 
-если все переданные ей параметры являются целыми числами 
-или числами с плавающей точкой. 
-В противном случае функция должна возвращать False.
+Ваша задача - вернуть одну из следующих строк:
 
-Функция должна принимать любое количество параметров.
+< firstName here >, < country here > первого разработчика Python, который зарегистрировался; или
+There will be no Python developers если ни один разработчик Python не зарегистрировался.
+Например, учитывая следующий входной массив:
 
-Пример использования:
-
-numbers(1, 4, 3, 2, 5); # True
-numbers(1, "a", 3); # False
-numbers(1, 3, None); # False
-numbers(1.23, 5.6, 3.2) # True
+list1 = [
+  { "first_name": "Mark", "last_name": "G.", "country": "Scotland", "continent": "Europe", "age": 22, "language": "JavaScript" },
+  { "first_name": "Victoria", "last_name": "T.", "country": "Puerto Rico", "continent": "Americas", "age": 30, "language": "Python" },
+  { "first_name": "Emma", "last_name": "B.", "country": "Norway", "continent": "Europe", "age": 19, "language": "Clojure" }
+]
+ваша функция должна вернуть значение Victoria, Puerto Rico.
 '''
-def numbers(*args):
-    for item in args:
-        if not isinstance(item, (int, float)):
-            return False
-    return True
+# def get_first_python(users):
+#     for user in users:
+#         if user.get('language') == 'Python':
+#             return f"{user.get('first_name')}, {user.get('country')}"
+#     return 'There will be no Python developers'
+#
+# list1 = [
+#   { "first_name": "Mark", "last_name": "G.", "country": "Scotland", "continent": "Europe", "age": 22, "language": "JavaScript" },
+#   { "first_name": "Victoria", "last_name": "T.", "country": "Puerto Rico", "continent": "Americas", "age": 30, "language": "Python" },
+#   { "first_name": "Emma", "last_name": "B.", "country": "Norway", "continent": "Europe", "age": 19, "language": "Clojure" }
+# ]
+#
+# print(get_first_python(list1))
+'''
+Напишите функцию, которая возвращает последовательность (индекс начинается с 1) всех чётных символов из строки. 
+Если длина строки меньше двух символов или больше 100 символов, функция должна возвращать «некорректную строку».
 
-print(numbers((1, 4, 3, 2, 5)))
+Например:
+
+"abcdefghijklm" --> ["b", "d", "f", "h", "j", "l"]
+"a"             --> "invalid string"
+'''
+def even_chars(st):
+    result = []
+    count = 1
+    for el in range(len(st)+1):
+        if len(st) < 2 or len(st) > 100:
+            return 'invalid string'
+        else:
+            if el == st[0]:
+                continue
+            else:
+                result.append(count)
+                count += 2
+
+    return result
+
+print(even_chars("abcdefghijklm"))
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#https://www.codewars.com/kata/583ea278c68d96a5fd000abd
